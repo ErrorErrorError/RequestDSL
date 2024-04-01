@@ -11,8 +11,12 @@ import Foundation
 public struct Path: RequestProperty {
   let path: LosslessStringConvertible
   
-  init(_ path: LosslessStringConvertible) {
+  public init(_ path: LosslessStringConvertible) {
     self.path = path
+  }
+  
+  public init(_ paths: LosslessStringConvertible...) {
+    self.path = paths.map(\.description).joined(separator: "/")
   }
   
   public func mutate(request: inout URLRequest) {

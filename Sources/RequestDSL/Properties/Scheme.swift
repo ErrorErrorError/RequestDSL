@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Scheme.swift
 //  
 //
 //  Created by ErrorErrorError on 3/28/24.
@@ -11,7 +11,7 @@ import Foundation
 public struct Scheme: RequestProperty {
   let scheme: String
   
-  init(_ scheme: String) {
+  public init(_ scheme: String) {
     self.scheme = scheme
   }
   
@@ -20,4 +20,9 @@ public struct Scheme: RequestProperty {
     components.scheme = scheme
     request.url = components.url ?? request.url
   }
+}
+
+public extension Scheme {
+  static let http = Self("http")
+  static let https = Self("https")
 }

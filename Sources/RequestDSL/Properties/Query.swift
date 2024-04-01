@@ -12,7 +12,7 @@ public struct Query: RequestProperty {
   let name: String
   let values: [LosslessStringConvertible]
   
-  init<each S: LosslessStringConvertible>(
+  public init<each S: LosslessStringConvertible>(
     _ name: String,
     values: repeat each S
   ) {

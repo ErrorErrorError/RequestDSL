@@ -12,7 +12,7 @@ public struct Header: RequestProperty {
   let header: String
   let value: String
   
-  init(_ header: String, _ value: String) {
+  public init(_ header: String, _ value: String) {
     self.header = header
     self.value = value
   }

@@ -9,7 +9,7 @@
 import Foundation
 
 
-// FIXME: Use parameter packs
+// FIXME: Use parameter packs, restrict to Swift 5.10
 public struct Request<T> {
   private var _build: (T) -> RequestProperty
   
@@ -18,10 +18,6 @@ public struct Request<T> {
   }
   
   public init(@PropertyBuilder build: @escaping (T) -> RequestProperty) {
-    self._build = build
-  }
-  
-  public init<O>(_: (T) -> O, @PropertyBuilder build: @escaping (T) -> RequestProperty) {
     self._build = build
   }
   
@@ -43,5 +39,4 @@ public struct Request<T> {
   public func callAsFunction() throws -> URLRequest where T == Void {
     try build()
   }
-  
 }

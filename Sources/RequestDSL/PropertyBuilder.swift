@@ -9,39 +9,39 @@
 import Foundation
 
 @resultBuilder
-enum PropertyBuilder {
+public enum PropertyBuilder {
   // var properties = [Method.get, Header("", ""), Path("")]
-  static func buildBlock(_ components: RequestProperty...) -> RequestProperty {
+  public static func buildBlock(_ components: RequestProperty...) -> RequestProperty {
     components.reduce(AllProperties()) {
       $0.add($1)
     }
   }
   
-  static func buildPartialBlock(first: RequestProperty) -> RequestProperty {
+  public static func buildPartialBlock(first: RequestProperty) -> RequestProperty {
     first
   }
   
-  static func buildPartialBlock(accumulated: RequestProperty, next: RequestProperty) -> RequestProperty {
+  public static func buildPartialBlock(accumulated: RequestProperty, next: RequestProperty) -> RequestProperty {
     accumulated.append(next)
   }
   
-  static func buildOptional(_ component: RequestProperty?) -> RequestProperty {
+  public static func buildOptional(_ component: RequestProperty?) -> RequestProperty {
     component ?? AllProperties()
   }
   
-  static func buildEither(first component: RequestProperty) -> RequestProperty {
+  public static func buildEither(first component: RequestProperty) -> RequestProperty {
     component
   }
   
-  static func buildEither(second component: RequestProperty) -> RequestProperty {
+  public static func buildEither(second component: RequestProperty) -> RequestProperty {
     component
   }
   
-  static func buildArray(_ components: [RequestProperty]) -> RequestProperty {
+  public static func buildArray(_ components: [RequestProperty]) -> RequestProperty {
     AllProperties(items: components)
   }
   
-  static func buildLimitedAvailability(_ component: RequestProperty) -> RequestProperty {
+  public static func buildLimitedAvailability(_ component: RequestProperty) -> RequestProperty {
     component
   }
 }
